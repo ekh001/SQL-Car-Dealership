@@ -1,7 +1,7 @@
 --Primary Keys can't be empty or duplicated.
 --Create tables without foreign keys first! All your "only primary keys" should be created first.
 
---Customer DONE
+--Customer 
 create table customer (
 	customer_id SERIAL primary key,
 	cu_first_name VARCHAR(150),
@@ -9,19 +9,18 @@ create table customer (
 	phone_number VARCHAR(100),
 	billiing_info VARCHAR(150)
 );
---Did I spell "billing" incorrectly and only realize it when I was 95% finished with this project? Yes. Yes I did. 
 
 ALTER TABLE customer RENAME COLUMN billiing_info TO billing_info;
 
 
---Salesperson DONE
+--Salesperson 
 create table salesperson (
 	salesperson_id SERIAL primary key,
 	sp_first_name VARCHAR(150),
 	sp_last_name VARCHAR(150)
 );
 
---Car DONE
+--Car 
 create table car (
 	serial_number SERIAL primary key,
 	car_make VARCHAR(150),
@@ -33,7 +32,7 @@ create table car (
 	foreign key(salesperson_id) references salesperson(salesperson_id)
 );
 
---Sales invoice DONE
+--Sales invoice 
 create table invoice (
 	upc SERIAL primary key,
 	total_sales_price NUMERIC(8,2),
@@ -42,7 +41,7 @@ create table invoice (
 	foreign key(salesperson_id) references salesperson(salesperson_id)
 );
 
---Mechanic DONE
+--Mechanic 
 create table mechanic (
 	mechanic_id SERIAL primary key,
 	me_first_name VARCHAR(150),
@@ -51,7 +50,7 @@ create table mechanic (
 	foreign key(serial_number) references car(serial_number)
 )
 
---Service DONE
+--Service 
 create table service (
 	service_id SERIAL primary key,
 	service_price VARCHAR(150),
@@ -60,7 +59,7 @@ create table service (
 	foreign key(serial_number) references car(serial_number)
 )
 
---Service records DONE
+--Service records 
 create table service_records (
 	record_id SERIAL primary key,
 	service_id INTEGER not null,
